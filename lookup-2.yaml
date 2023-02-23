@@ -1,0 +1,9 @@
+---
+- name: lookup for environmental variables
+  hosts: all
+  vars:
+   local_shell: "{{ lookup('env', 'SHELL')}}"
+  tasks:
+    - name: This is lookup for env
+      debug:
+        msg: "{{ local_shell }}"

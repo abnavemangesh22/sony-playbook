@@ -1,0 +1,16 @@
+---
+- name: This is csvfile lookup demo
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_user: "{{ lookup('csvfile', 'client-2 file=/root/sony-1/password.csv delimiter=,') }}"
+    ansible_password: "{{ lookup('csvfile', 'client-2 file=/root/sony-1/password.csv delimiter=, col=2') }}"
+  tasks:
+   - name: show the username
+     debug:
+       msg: "{{ ansible_user }}"
+   - name: show the password
+     debug:
+       msg: "{{ ansible_password }}"
+   - name: copy the content into hosts
+     copy: dest=/root/sony-1/mangesh.ini content='client2 ansible_user={{ ansible_user }} ansible_password={{ ansible_password }}'
