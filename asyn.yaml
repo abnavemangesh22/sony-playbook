@@ -3,9 +3,13 @@
   hosts: database
   tasks:
    - name: I am executing the sleep command
-     command: sleep 60
-     async: 70
-     poll: 10
+     command: sleep 120
+     async: 130
+     poll: 0
+   - name: I am executing wake up command
+     command: sleep 150
+     async: 160
+     poll: 0 
    - name: I am execuritng second play
      debug:
         msg: I am done

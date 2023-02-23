@@ -1,0 +1,24 @@
+---
+ - name: ansible error handling
+   hosts: websrv,database
+   any_errors_fatal: true
+   tasks:
+    - block:
+       - name: Files with errors
+         command: touch /tmp/task/temp.txt
+
+       - name: Files without errors
+         command: touch /tmp/task/errors.txt
+
+       - name: I am handling error
+         debug:
+           msg: This is error handling
+      ignore_errors: yes
+      rescue:
+        - name: this is a rescue tasks
+          debug:
+            msg: "This is undo tasks"
+      always:
+        - name: This is an always tasks working on machine
+          debug:
+            msg: "This is always block or tasks" 

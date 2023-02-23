@@ -1,13 +1,13 @@
 ---
  - name: ansible error handling
-   hosts: websrv,database,localhost
+   hosts: websrv,database
    any_errors_fatal: true
    tasks:
-     - name: Files with errors
-       command: touch /tmp/task/temp.txt
-     
      - name: Files without errors
-       command: touch /tmp/errors.txt
+       command: touch /tmp/temp.txt
+     
+     - name: Files with errors
+       command: touch /tmp/task/errors.txt
 
      - name: I am handling error
        debug:

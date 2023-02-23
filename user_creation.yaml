@@ -4,5 +4,7 @@
     name: "{{ item }}"
     state: present
   loop:
-    - peter3
-    - john3
+    - peter5
+    - john5
+    - mangesh5
+    - samruddh5

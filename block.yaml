@@ -1,0 +1,20 @@
+---
+ - name: Irgnoring the errors
+   hosts: all
+   tasks:
+     - block:
+        - name: command task1
+          command: ls -l /tmp/mangesh1
+          register: task1
+
+        - name: command task2
+          command: ls -l /tmp/mangesh2
+          register: task2
+
+        - name: command task3
+          command: ls -l /tmp/mangesh3
+          register: task3
+       rescue:
+         - name: this is rescue task
+           debug:
+              msg: "This is my rescue block"

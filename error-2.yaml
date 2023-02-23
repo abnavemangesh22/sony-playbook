@@ -12,4 +12,4 @@
       failed_when: "'ERROR' in command_output.stdout"
     - name: This is a tasks after error
       debug:
-        msg: This is just a error
+        msg: "{{ command_output }}"
