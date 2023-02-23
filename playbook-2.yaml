@@ -1,0 +1,6 @@
+---
+ - name: This is admin user creation play
+   hosts: database
+   tasks:
+     - name: This task will create an user
+       user: name=admin state=present uid=5001 group=root

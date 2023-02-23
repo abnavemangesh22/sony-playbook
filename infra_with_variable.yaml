@@ -1,0 +1,35 @@
+---
+- name: Enable internal intranet service
+  hosts: database
+  vars:
+   myweb: httpd
+   myfire: firewalld
+   myweb1: http
+  gather_facts: false
+  tasks:
+   - name: Installation of the {{ myweb }} and {{ myfire }}
+     yum:
+      name:
+       - "{{ myweb }}"
+       - "{{ myfire }}"
+      state: present
+   - name: Enable and start the {{ myfire }} service
+     service:
+      name: "{{ myfire }}"
+      enabled: true
+      state: started
+   - name: Permission for {{ myweb }} service on firewall
+     firewalld:    
+      service: "{{ myweb1 }}"
+      permanent: yes
+      state: enabled
+      immediate: yes
+   - name: start {{ myweb }} service on webservers
+     service:
+      name: "{{ myweb }}"
+      enabled: true
+      state: started
+   - name: Sample page creation
+     copy:
+      content: "Welcome to ansible training"
+      dest: /var/www/html/index.html

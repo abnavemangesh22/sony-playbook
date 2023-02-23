@@ -1,0 +1,12 @@
+---
+- name: Multiple user creation on the remote server
+  hosts: all
+  tasks:
+   - name: This is user creation
+     user:
+       name: "{{ item }}"
+       state: present
+     loop:
+      - mangesh
+      - rajeev
+      - amruth

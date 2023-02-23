@@ -1,0 +1,12 @@
+---
+- name: this is simple conditional statement
+  hosts: websrv
+  vars:
+   age: 19
+  tasks:
+   - name: this is my tasks for the age
+     command: touch /tmp/myage-18.txt
+     when: age == 18
+   - name: this is the display tasks
+     debug:
+      msg: "I am {{ age }} old"

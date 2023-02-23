@@ -1,0 +1,15 @@
+---
+ - name: this demo for loolup
+   hosts: database
+   vars:
+     ansible_user: "{{ lookup('csvfile', 'client-2 file=/root/sony-1/password.csv delimiter=,') }}"
+     ansible_password: "{{ lookup('csvfile', 'client-2 file=/root/sony-1/password.csv delimiter=, col=2') }}"
+   tasks:
+    - name: show the user
+      debug:
+        msg: "{{ ansible_user }}"
+    - name: show the password
+      debug:
+        msg: "{{ ansible_password }}"
+    - name: copy the content into the file
+      copy: dest=/tmp/myfile content="{{ ansible_user }}"

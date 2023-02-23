@@ -1,0 +1,22 @@
+---
+- name: this the test of debug module
+  hosts: database,websrv
+  vars:
+   myweb: httpd-1
+   myfire: firewalld-1
+  tasks:
+   - name: Printing customize message
+     debug:
+       msg: "{{ myweb }} is open on {{ myfire }}"
+
+
+- name: this the test of debug module
+  hosts: database,websrv
+  vars:
+    myweb: tomcat
+    myfire: surefire-1
+  tasks:
+   - name: Printing customize message
+     debug:
+       msg: "{{ myweb }} is open on {{ myfire }}"
+

@@ -1,0 +1,14 @@
+---
+- name: This is my first play
+  hosts: websrv
+  tasks:
+    - name: This task will install the git software
+      yum: name=git state=present
+    - name: This task will create a file with the help of command module
+      command: touch /tmp/taskscompleted.txt
+
+- name: This is my second play
+  hosts: database
+  tasks:
+   - name: This is my second tasks
+     yum: name=httpd state=present

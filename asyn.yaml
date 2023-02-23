@@ -1,0 +1,11 @@
+---
+- name: this asynch tasks
+  hosts: database
+  tasks:
+   - name: I am executing the sleep command
+     command: sleep 60
+     async: 70
+     poll: 10
+   - name: I am execuritng second play
+     debug:
+        msg: I am done

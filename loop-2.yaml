@@ -1,0 +1,18 @@
+---
+- name: This is a playbook for loop
+  hosts: websrv,database
+  vars:
+    pkg:
+     - vsftpd
+     - tree
+     - git
+     - mysql
+     - tomcat
+  tasks:
+   - name: installation of the packes
+     when: ansible_hostname == "client-2"
+     yum: name="{{ item }}" state=present
+     with_items: "{{ pkg }}"
+   - name: display the message
+     debug:
+       msg: "This is the tasks after condition failure"

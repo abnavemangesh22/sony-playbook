@@ -1,0 +1,10 @@
+---
+- name: capture the output of command
+  hosts: websrv
+  tasks:
+   - name: collect the ip information of the machine
+     shell: ifconfig ens33
+     register: ip_addr
+   - name: display the output thru register variable
+     debug:
+       msg: "{{ ip_addr }}"

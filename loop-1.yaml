@@ -1,0 +1,13 @@
+---
+- name: This is my loop method-1
+  hosts: all
+  tasks:
+   - name: installation of multiple packages
+     yum: name="{{ item }}" state=absent
+     with_items:
+       - vsftpd
+       - tree
+       - git
+       - mysql
+       - tomcat
+     

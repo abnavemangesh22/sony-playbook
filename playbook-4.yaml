@@ -1,0 +1,9 @@
+---
+- name: copy the files from one machine to another
+  hosts: websrv,database
+  tasks:
+   - name: copy the file from management to remote server
+     copy:
+       src: /tmp/demo
+       dest: /tmp/sample/
+       remote_src: yes 

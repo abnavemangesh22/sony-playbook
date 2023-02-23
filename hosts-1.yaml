@@ -1,0 +1,14 @@
+prod:
+ children:
+  websrv: 
+   hosts:
+    192.168.195.13:
+     ansible_user: root
+     ansible_connection: ssh
+     ansible_password: root
+  database:
+   hosts:
+    192.168.195.14:
+     ansible_user: root
+     ansible_connection: ssh
+     ansible_password: root

@@ -1,0 +1,17 @@
+---
+- name: this is the playbook for magical variables
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Can you tell name of the ansible user running on remote 
+      debug:
+        msg: "{{ ansible_user }}"
+
+    - name: can you tell me the inventory information
+      debug:
+        msg: "{{ inventory_hostname }}"
+    
+    - name: can you tell me the group information
+      debug:
+        msg: "{{ group_names }}"
+    

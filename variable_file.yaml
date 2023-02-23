@@ -1,0 +1,20 @@
+---
+- name: this the test of debug module
+  hosts: database,websrv
+  vars_files:
+   - var_files
+  tasks:
+   - name: Printing customize message
+     debug:
+       msg: "{{ myweb }} is open on {{ myfire }}"
+
+
+- name: this the test of debug module
+  hosts: database,websrv
+  vars_files:
+   - var_files
+  tasks:
+   - name: Printing customize message
+     debug:
+       msg: "{{ myweb }} is open on {{ myfire }}"
+

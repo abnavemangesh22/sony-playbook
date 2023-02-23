@@ -1,0 +1,11 @@
+---
+- name: This is again i am executing condition
+  hosts: all
+  tasks:
+    - name: installation of the package should be done on client-1 only
+      yum: name=git state=present
+      when: ansible_hostname == "client-1"
+    - name: Display tasks would only be done on client-2 only
+      when: ansible_hostname == "client-2"
+      debug:
+        msg: "I am client-2"

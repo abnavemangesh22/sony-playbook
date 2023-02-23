@@ -1,0 +1,6 @@
+---
+- name: include tasks
+  hosts: all
+  tasks:
+   - name: including tasks
+     include_tasks: user_creation.yaml

@@ -1,0 +1,31 @@
+---
+- name: Enable internal intranet service
+  hosts: websrv,database
+  gather_facts: false
+  tasks:
+   - name: Installation of the httpd and firewalld
+     yum:
+      name:
+       - httpd
+       - firewalld
+      state: present
+   - name: Enable and start the firewalld service
+     service:
+      name: firewalld
+      enabled: true
+      state: started
+   - name: Permission for httpd service on firewall
+     firewalld:    
+      service: http
+      permanent: yes
+      state: enabled
+      immediate: yes
+   - name: start httpd service on webservers
+     service:
+      name: httpd
+      enabled: true
+      state: started
+   - name: Sample page creation
+     copy:
+      content: "Welcome to ansible training"
+      dest: /var/www/html/index.html

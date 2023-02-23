@@ -1,0 +1,15 @@
+---
+- name: I am trying new error handling concepts
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: This is a debug module
+      debug:
+        msg: This is just a message
+    - name: This is cat command
+      command: cat /tmp/myfile
+      register: command_output
+      failed_when: "'ERROR' in command_output.stdout"
+    - name: This is a tasks after error
+      debug:
+        msg: This is just a error

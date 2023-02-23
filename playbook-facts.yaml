@@ -1,0 +1,13 @@
+---
+- name: the tasks using the ansible-facts
+  hosts: all
+  gather_facts: false 
+  tasks:
+   - name: gather the facts from setup module 
+     setup:
+   - name: show details about the client
+     debug:
+       msg: "{{ ansible_hostname }} {{ ansible_default_ipv4['address'] }} {{ ansible_distribution }}"
+   - name: information about the kernel and os family
+     debug:
+       msg: "{{ ansible_kernel }} {{ ansible_os_family }}"

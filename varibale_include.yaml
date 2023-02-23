@@ -1,0 +1,29 @@
+---
+- name: this the test of debug module
+  hosts: database
+  tasks:
+   - name: Declaring the variable files
+     include_vars: var_files
+   - name: Printing customize message
+     debug:
+       msg: "{{ myweb }} is open on {{ myfire }}"
+
+
+- name: this the test of debug module -- play 2
+  hosts: websrv
+  tasks:
+   - name: Declaring the variable files
+     include_vars: var_files
+   - name: Printing customize message
+     debug:
+       msg: "{{ myweb }} is open on {{ myfire }}"
+
+
+- name: this is the test debug module --- play 3
+  hosts: localhost
+  tasks:
+   - name: Declaring the variable files
+     include_vars: var_files
+   - name: Printing customize message
+     debug:
+       msg: "{{ myweb }} is open on {{ myfire }}"

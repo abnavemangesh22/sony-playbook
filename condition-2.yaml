@@ -1,0 +1,20 @@
+---
+- name: installation of web server
+  hosts: websrv
+  tasks:
+   - name: installed of web application server
+     yum:
+      name: httpd
+      state: present
+     register: yum_output
+     ignore_errors: true
+
+   - name: show the value stored into register variable
+     debug:
+       msg: "{{ yum_output }}"
+  
+   - name: this tasks will execute when condition is fullfilled
+     when: yum_output.failed == true
+     debug:
+       msg: This will only execute the condition is successful
+         

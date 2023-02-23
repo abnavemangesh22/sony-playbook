@@ -1,0 +1,8 @@
+---
+- name: make available users
+  user:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - peter3
+    - john3

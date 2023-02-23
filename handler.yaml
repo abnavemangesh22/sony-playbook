@@ -1,0 +1,12 @@
+---
+- name: handler demo
+  hosts: websrv
+  tasks:
+   - name: installation of the webserver
+     yum: name=httpd state=present
+     notify: change the content
+   - name: start the httpd server
+     service: name=httpd state=started
+  handlers:
+   - name: change the content
+     copy: dest=/var/www/html/index.html content="This is the content done by handler" 

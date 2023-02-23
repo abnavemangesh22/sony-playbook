@@ -1,0 +1,8 @@
+---
+- name: this the test of debug module
+  hosts: database,websrv
+  gather_facts: false
+  tasks:
+   - name: Printing customize message
+     debug:
+       msg: "Hello ansible"

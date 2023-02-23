@@ -1,0 +1,6 @@
+---
+- name: import tasks
+  hosts: all
+  tasks:
+   - name: importing tasks
+     import_tasks: user_creation.yaml

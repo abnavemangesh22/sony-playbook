@@ -1,0 +1,7 @@
+---
+- name: Testing customize facts
+  hosts: database
+  tasks:
+   - name: get application facts
+     debug:
+       msg: "{{ ansible_local.web.webdetails.web_port }}"
